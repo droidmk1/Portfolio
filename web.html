@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Alvaro Farfan</title>
+    <link rel="icon" type="image/png" href="Picture1.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg-color: #1e1e1e;
+            --primary-color: #6c5ce7; /* Main Purple */
+            --text-color: #e0e0e0;
+            --secondary-text-color: #a0a0a0;
+            --link-color: #a29bfe;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid var(--card-bg-color);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--secondary-text-color);
+            margin-top: 10px;
+        }
+        
+        .section {
+            padding: 50px 0;
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            display: block;
+            margin: 10px auto 0;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background-color: var(--card-bg-color);
+            padding: 20px;
+            border-left: 3px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .skill-item h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .skill-item p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--secondary-text-color);
+        }
+        
+        .skill-list li {
+            list-style-type: none;
+            padding: 5px 0;
+            color: var(--text-color);
+        }
+
+        /* Experience and Achievements Sections */
+        .experience-item, .achievement-item {
+            background-color: var(--card-bg-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 20px;
+        }
+        
+        .experience-item h3, .achievement-item h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        
+        .experience-item p {
+            margin-top: 5px;
+            color: var(--secondary-text-color);
+        }
+        
+        .experience-item ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        
+        .experience-item li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .experience-item li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .achievement-item p {
+            margin: 0;
+        }
+
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .project-thumbnail {
+            width: 100%;
+            height: 200px;
+            background-color: #282828;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-info p {
+            margin: 0;
+            color: var(--secondary-text-color);
+        }
+
+        /* Social Links */
+        .social-links {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .social-links a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--card-bg-color);
+            margin-top: 40px;
+            color: var(--secondary-text-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img src="Picture1.png" alt="Alvaro Farfan's Logo" style="width: 200px; height: 200px; border-radius: 50%;">
+            <h1>Alvaro Farfan</h1>
+            <p>Data Scientist Senior | Computer Science at UNMSM</p>
+            <p>I am a specialist in data analysis and management in the banking sector. I transform raw data into actionable insights and automated solutions that optimize decision-making and improve key business indicators. My expertise includes advanced analysis, data visualization, and designing A/B experiments.</p>
+        </header>
+
+        <section class="section">
+            <h2>Professional Experience</h2>
+            <div class="experience-list">
+                <div class="experience-item">
+                    <h3>Data Scientist Senior - Risk & Portfolio Management</h3>
+                    <p>Banco Falabella | Lima, Peru</p>
+                    <p>Sep. 2025 - Present</p>
+                </div>
+            </div>
+
+            <div class="experience-list">
+                <div class="experience-item">
+                    <h3>Business Specialist - Personal Loans Tribe</h3>
+                    <p>BCP (Banco de Crédito del Perú) | Lima, Peru</p>
+                    <p>Nov. 2024 - Aug. 2025</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Digital Communications Assistant - COE CRM Analytics</h3>
+                    <p>BCP (Banco de Crédito del Perú) | Lima, Peru</p>
+                    <p>Apr. 2024 - Nov. 2024</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3>Data Analysis & Machine Learning</h3>
+                    <ul>
+                        <li>Python, Spark, SQL (PL/SQL, BigQuery)</li>
+                        <li>Machine Learning</li>
+                        <li>Advanced Analytics</li>
+                    </ul>   
+                </div>
+                <div class="skill-item">
+                    <h3>Data & Cloud Platforms</h3>
+                    <ul>
+                        <li>Google Cloud Platform, Azure</li>
+                        <li>Power BI, Adobe Analytics</li>
+                        <li>A/B Testing</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h3>Business & Automation</h3>
+                    <ul>
+                        <li>Automation</li>
+                        <li>Business Strategy</li>
+                        <li>Data Visualization</li>
+                        <li>GIT (Version Control)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <a href="https://github.com/your-username/your-repo-name-1" class="project-card" target="_blank">
+                    <div class="project-thumbnail">
+                        <img src="https://via.placeholder.com/400x200" alt="Credit Risk Analytics Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>Credit Risk Analytics</h3>
+                        <p>Development of predictive models to assess credit risk and optimize portfolio management.</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/your-username/your-repo-name-2" class="project-card" target="_blank">
+                    <div class="project-thumbnail">
+                        <img src="https://via.placeholder.com/400x200" alt="Process Automation Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>Process Automation & Data Migration</h3>
+                        <p>Designed and implemented automated campaign workflows and data migration for a bank's CRM.</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/your-username/your-repo-name-3" class="project-card" target="_blank">
+                    <div class="project-thumbnail">
+                        <img src="https://via.placeholder.com/400x200" alt="Data Visualization Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>Strategic Reporting & Data Visualization</h3>
+                        <p>Developed interactive dashboards and strategic reports to monitor key metrics and support executive decision-making.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Achievements</h2>
+            <div class="achievement-item">
+                <p>Recognized as a <b>Ninja Analytics Senior</b></p>
+                <p>Banco de Crédito del Perú (BCP) | 2024</p>
+            </div>
+            <div class="achievement-item">
+                <p>Recognized as an <b>Outstanding Student</b></p>
+                <p>Universidad Nacional Mayor de San Marcos (UNMSM) | 2022</p>
+            </div>
+        </section>
+        
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/alvaro-farfan-vera" target="_blank">LinkedIn</a>
+            <a href="https://github.com/your-username" target="_blank">GitHub</a>
+            <a href="mailto:alvaro.farfan@outlook.com">Email</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Alvaro Farfan. Made with ❤️</p>
+    </footer>
+
+</body>
+</html>
